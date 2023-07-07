@@ -26,24 +26,26 @@ function App() {
   return (
     <>
       <ul>
-        {contacts.map((contact_i) => {
+        {contacts.map((contact_i: Contact): JSX.Element => {
           const { name, emails } = contact_i;
           return (
             <li key={name}>
               {name}
               <ul>
-                {emails.map((email_i) => (
-                  <li key={email_i}>
-                    {email_i}{' '}
-                    <button
-                      onClick={() => {
-                        deleteEmail(name, email_i);
-                      }}
-                    >
-                      delete
-                    </button>
-                  </li>
-                ))}
+                {emails.map(
+                  (email_i: string): JSX.Element => (
+                    <li key={email_i}>
+                      {email_i}{' '}
+                      <button
+                        onClick={() => {
+                          deleteEmail(name, email_i);
+                        }}
+                      >
+                        delete
+                      </button>
+                    </li>
+                  ),
+                )}
               </ul>
             </li>
           );
